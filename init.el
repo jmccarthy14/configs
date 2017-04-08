@@ -7,6 +7,11 @@
     `(setq ,name ,value)
     `(defvar ,name ,value)))
 
+
+;; Clipboard functions
+(setq x-select-enable-clipboard t)
+(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+
 (require 'package) 
 ;;(add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/") t)
 ;;(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
@@ -15,7 +20,7 @@
 (package-initialize) 
 (require 'use-package)
 (setq use-package-always-ensure t)
-
+(desktop-save-mode 1)
 ;; use-package is only needed at compile time.
 
 (use-package helm-config
@@ -27,6 +32,7 @@
         ("C-x C-i" . helm-imenu)
         ("C-h a" . helm-apropos)
         ("C-c C-h" . helm-org-agenda-files-headings)
+	("C-x C-f" . helm-find-files)
         ("C-c ;" . helm-recentf))
     )
 
@@ -141,5 +147,3 @@
 
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
-
-
