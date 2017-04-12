@@ -10,7 +10,9 @@
 
 ;; Clipboard functions
 (setq x-select-enable-clipboard t)
-(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+;; This was used on the mac
+;;(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
+(setq interprogram-paste-function 'x-selection-value)
 
 (require 'package) 
 ;;(add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/") t)
@@ -57,6 +59,11 @@
   :config
   (progn (global-flycheck-mode))
   :diminish flycheck-mode)
+
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
 
 (use-package ace-window
   :config
