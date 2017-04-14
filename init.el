@@ -69,7 +69,7 @@
 (use-package ace-window
   :config
   (progn
-    (global-set-key (kbd "M-p") 'ace-window)
+    (global-set-key (kbd "C-x p") 'ace-window)
     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))))
 
 ;; NEOTREE setup
@@ -112,6 +112,7 @@
 ;;(unbind-key "C-c p s s" projectile-command-map)
 (bind-key "C-c p f" 'helm-projectile	)
 (bind-key "C-c s" 'helm-projectile-ag)
+
 
 ;; APPEARANCE
 (defun remove-fringe-and-hl-line-mode (&rest stuff)
