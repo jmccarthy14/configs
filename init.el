@@ -40,6 +40,7 @@
 
 (use-package projectile
   :config (progn (projectile-global-mode)))
+
 (use-package evil)
 (use-package helm-themes)
 (use-package helm-projectile)
@@ -70,6 +71,13 @@
   (progn
     (global-set-key (kbd "M-p") 'ace-window)
     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))))
+
+;; NEOTREE setup
+(add-to-list 'load-path "/Users/jmccarthy/src/learning/redux-saga-beginner-tutorial")
+(use-package neotree)
+(global-set-key [f8] 'neotree-toggle)
+
+
 ;;(exec-path-from-shell-copy-env "GOPATH")
 
 ;; autocomplete
