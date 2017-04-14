@@ -75,9 +75,22 @@
     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))))
 
 ;; NEOTREE setup
-(add-to-list 'load-path "/Users/jmccarthy/src/learning/redux-saga-beginner-tutorial")
 (use-package neotree)
-(global-set-key [f8] 'neotree-toggle)
+(defun neotree-project-dir ()
+    "Open NeoTree using the git root."
+    (interactive)
+    (let ((project-dir (projectile-project-root))
+	    (file-name (buffer-file-name)))
+	(neotree-toggle)
+	(if project-dir
+	    (if (neo-global--window-exists-p)
+		(progn
+		(neotree-dir project-dir)
+		(neotree-find file-name)))
+	(message "Could not find git project root."))))
+(global-set-key [f8] 'neotree-project-dir)
+
+
 
 (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-enter)
@@ -170,3 +183,7 @@
 
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+
+;; JAVASCRIPT HELP
+(use-package js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
