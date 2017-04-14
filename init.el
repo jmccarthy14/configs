@@ -31,6 +31,7 @@
     :demand t
     :bind (("M-y" . helm-show-kill-ring)
         ("M-x" . helm-M-x)
+	("C-x x" . helm-M-x)
         ("C-x C-i" . helm-imenu)
         ("C-h a" . helm-apropos)
         ("C-c C-h" . helm-org-agenda-files-headings)
@@ -69,6 +70,7 @@
 (use-package ace-window
   :config
   (progn
+    ;; We use this so we can actually grab it in a terminal, unlike meta commands
     (global-set-key (kbd "C-x p") 'ace-window)
     (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))))
 
@@ -76,6 +78,11 @@
 (add-to-list 'load-path "/Users/jmccarthy/src/learning/redux-saga-beginner-tutorial")
 (use-package neotree)
 (global-set-key [f8] 'neotree-toggle)
+
+(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
 
 
 ;;(exec-path-from-shell-copy-env "GOPATH")
