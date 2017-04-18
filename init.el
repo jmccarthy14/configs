@@ -133,6 +133,9 @@
 (bind-key "C-c p f" 'helm-projectile	)
 (bind-key "C-c s" 'helm-projectile-ag)
 
+(hs-minor-mode t)
+(bind-key "C-c t" 'hs-toggle-hiding)
+
 
 ;; APPEARANCE
 (defun remove-fringe-and-hl-line-mode (&rest stuff)
